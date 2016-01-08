@@ -121,7 +121,6 @@ def students_by_house(filename):
     order_of_the_phoenix.sort()
     all_students = [gryffindor, ravenclaw, slytherin, hufflepuff, order_of_the_phoenix, 
                     dumbledores_army, tas, instructors]
-    print all_students
     return all_students
 
 students_by_house("cohort_data.txt")
