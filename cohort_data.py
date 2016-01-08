@@ -123,7 +123,7 @@ def students_by_house(filename):
                     dumbledores_army, tas, instructors]
     return all_students
 
-students_by_house("cohort_data.txt")
+#students_by_house("cohort_data.txt")
 
 def all_students_tuple_list(filename):
     """TODO: Create a list of tuples of student data.
@@ -138,10 +138,17 @@ def all_students_tuple_list(filename):
     """
 
     student_list = []
+    cohort_data = open(filename)
+    for line in cohort_data:
+        person = line.rstrip().split("|")
+        if person[4] != "TA" and person[4] != "I":
+            full_name = person[0] + " " + person[1]
+            student_list.append((full_name, person[2], person[3], person[4],))
 
-    # Code goes here
-
+    filename.close()
     return student_list
+
+#all_students_tuple_list("cohort_data.txt")
 
 
 def find_cohort_by_student_name(student_list):
