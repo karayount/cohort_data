@@ -57,7 +57,7 @@ def sort_by_cohort(filename):
     summer_15.sort()        
     tas.sort()       
     all_students = [winter_15, spring_15, summer_15, tas]
-
+    cohort_data.close()
     return all_students
 
 sort_by_cohort("cohort_data.txt")
@@ -82,7 +82,7 @@ def students_by_house(filename):
             ]
     """
 
-    all_students = []
+
     gryffindor = []
     hufflepuff = []
     slytherin = []
@@ -92,10 +92,39 @@ def students_by_house(filename):
     tas = []
     instructors = []
 
-    # Code goes here
-
+    cohort_data = open(filename)
+    for line in cohort_data:
+        person = line.rstrip().split("|")
+        if person[4] == "TA":
+            tas.append(person[1])
+        elif person[4] == "I":
+            instructors.append(person[1])
+        elif person[2] == "Gryffindor":
+            gryffindor.append(person[1])
+        elif person[2] == "Hufflepuff":
+            hufflepuff.append(person[1])
+        elif person[2] == "Slytherin":
+            slytherin.append(person[1])
+        elif person[2] == "Ravenclaw":
+            ravenclaw.append(person[1])
+        elif person[2] == "Order of the Phoenix":
+            order_of_the_phoenix.append(person[1])
+        elif person[2] == "Dumbledore's Army":
+            dumbledores_army.append(person[1])
+    tas.sort()
+    instructors.sort()
+    ravenclaw.sort()
+    hufflepuff.sort()
+    slytherin.sort()
+    gryffindor.sort()
+    dumbledores_army.sort()
+    order_of_the_phoenix.sort()
+    all_students = [gryffindor, ravenclaw, slytherin, hufflepuff, order_of_the_phoenix, 
+                    dumbledores_army, tas, instructors]
+    print all_students
     return all_students
 
+students_by_house("cohort_data.txt")
 
 def all_students_tuple_list(filename):
     """TODO: Create a list of tuples of student data.
